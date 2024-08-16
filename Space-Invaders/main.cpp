@@ -22,7 +22,7 @@ public:
         return movement_speed;
     }
 
-    void setScore(int newScore) {
+    void setScore(int newScore) {   
         player_score = newScore;
     };
 
