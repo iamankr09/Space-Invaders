@@ -12,6 +12,9 @@ public:
     sf::Sprite player_sprite;
     
 
+    sf::Vector2f getPosition() {
+        return position;
+    }
     int getScore() {
         return player_score;
     };
@@ -29,33 +32,38 @@ public:
 
 int main()
 {
-    // Define the video mode (dimensions)
-    sf::VideoMode videoMode = sf::VideoMode(800, 600);
+      sf::VideoMode videoMode = sf::VideoMode(800, 600); // Define the video mode (dimensions)
+      sf::RenderWindow window(videoMode, "SFML Window");  // Create a window object
+      Player player;  // Create the player object
+      player.player_texture.loadFromFile("assets/textures/player_ship.png"); // Load the player ship texture
+      player.player_sprite.setTexture(player.player_texture);  // Set the player sprite variable 
 
-    // Create a window object with specific dimensions and a title
-    sf::RenderWindow window(videoMode, "SFML Window");
+      while (window.isOpen()) {
+          sf::Event event;
+          while (window.pollEvent(event)) {
+              // Check for window closure
+              if (event.type == sf::Event::Closed)
+                  window.close();
+          }
+              // Handle keyboard input
+              if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+                  player.move();
+              }
+              if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+                  player.move();
+              }
 
+              // Clear the window
+              window.clear(sf::Color::Blue); // this code will set a blue background color (optional)
 
+              player.player_sprite.setPosition(player.getPosition()); // Set the position of the player sprite
 
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            // Check for window closure
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+              window.draw(player.player_sprite);    // Draw the player sprite
 
+              window.display(); // Display what was drawn
 
-        // Clear the window
-        window.clear(sf::Color::Green);
+      } // end while loop
 
-       
-
-        // Display whatever you draw
-        window.display();
-
-        
-    }
 
  
 
