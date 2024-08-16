@@ -6,10 +6,24 @@ private :
     int health = 3;
     sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
     int player_score = 0;
+    int movement_speed = 5;
 public:
     sf::Texture player_texture;
     sf::Sprite player_sprite;
-    int movement_speed = 5;
+    
+
+    int getScore() {
+        return player_score;
+    };
+
+    void setScore(int newScore) {
+        player_score = newScore;
+    };
+
+    //New methods
+    void takeDamage() {};
+    void move() {};
+    void shootBullets() {};
   
 };
 
@@ -43,9 +57,7 @@ int main()
         
     }
 
-     Player player;
-
-    std::cout << player.movement_speed << "\\n";
+ 
 
     return 0;
 }
