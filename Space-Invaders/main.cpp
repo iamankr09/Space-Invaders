@@ -28,8 +28,8 @@ public:
 
     //New methods
     void takeDamage() {};
-    void move(float offsetX) {
-        position.x += offsetX;
+    void move(float offsetXDir) {
+        position.x += offsetXDir;
     }
     void shootBullets() {};
   
