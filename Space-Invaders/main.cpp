@@ -6,7 +6,7 @@ private :
     int health = 3;
     sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
     int player_score = 0;
-    int movement_speed = 5;
+    int movement_speed = 2;
 public:
     sf::Texture player_texture;
     sf::Sprite player_sprite;
@@ -18,6 +18,9 @@ public:
     int getScore() {
         return player_score;
     };
+    int GetMoveSpeed() {
+        return movement_speed;
+    }
 
     void setScore(int newScore) {
         player_score = newScore;
@@ -25,7 +28,9 @@ public:
 
     //New methods
     void takeDamage() {};
-    void move() {};
+    void move(float offsetX) {
+        position.x += offsetX;
+    }
     void shootBullets() {};
   
 };
@@ -47,14 +52,14 @@ int main()
           }
               // Handle keyboard input
               if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-                  player.move();
+                  player.move(-1.0f * player.GetMoveSpeed());
               }
               if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-                  player.move();
+                  player.move(1.0f * player.GetMoveSpeed());
               }
 
               // Clear the window
-              window.clear(sf::Color::Black); // this code will set a blue background color (optional)
+              window.clear(sf::Color::Blue); // this code will set a blue background color (optional)
 
               player.player_sprite.setPosition(player.getPosition()); // Set the position of the player sprite
 
