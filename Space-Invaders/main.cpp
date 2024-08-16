@@ -1,5 +1,17 @@
-
+#include<iostream>
 #include <SFML/Graphics.hpp>
+class Player {
+
+private :
+    int health = 3;
+    sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
+    int player_score = 0;
+public:
+    sf::Texture player_texture;
+    sf::Sprite player_sprite;
+    int movement_speed = 5;
+  
+};
 
 int main()
 {
@@ -21,16 +33,19 @@ int main()
 
 
         // Clear the window
-        window.clear(sf::Color::Blue);
+        window.clear(sf::Color::Green);
 
-        sf::CircleShape circle(50); // Radius 50
-        circle.setFillColor(sf::Color::Red);
-        circle.setPosition(400, 300); // Set position
-        window.draw(circle);
+       
 
         // Display whatever you draw
         window.display();
+
+        
     }
+
+     Player player;
+
+    std::cout << player.movement_speed << "\\n";
 
     return 0;
 }
