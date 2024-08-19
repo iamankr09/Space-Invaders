@@ -7,6 +7,10 @@ class GameService {
 	   GameService(); // Constructor of Intializing game service object
 	   ~GameService(); // Destructor of cleaning up resources upon object deletion
 
-
+	   void ignite();
+	   void update();
+	   void render();
+	   bool isRunning();
 };
+
 
